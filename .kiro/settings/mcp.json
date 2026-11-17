@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "crop-knowledge": {
+      "command": "node",
+      "args": [".kiro/mcp-server/crop-knowledge-server.mjs"],
+      "env": {},
+      "disabled": false,
+      "autoApprove": ["diagnose", "moon_phase", "crop_info"]
+    }
+  }
+}

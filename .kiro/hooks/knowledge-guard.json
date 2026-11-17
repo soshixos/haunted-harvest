@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "knowledge-guard",
+      "description": "Validate data/knowledge.json structure whenever it is saved: unique ids, known crops, >=3 symptoms per condition, severity 1-5.",
+      "trigger": "PostFileSave",
+      "matcher": "data/knowledge\\.json$",
+      "action": {
+        "type": "command",
+        "command": "node scripts/validate-knowledge.mjs"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+node_modules/
+.DS_Store
+# Never ignore .kiro — Devpost requires /.kiro at the repo root.

@@ -1,0 +1,31 @@
+# Implementation Tasks — Haunted Harvest
+
+- [x] 1. Scaffold project + Kiro config
+  - [x] 1.1 Create directory layout, README, LICENSE (MIT), package.json, .gitignore
+  - [x] 1.2 Write steering docs (product, tech, structure) in `.kiro/steering/`
+  - [x] 1.3 Write spec (requirements, design, tasks) in `.kiro/specs/haunted-harvest/`
+  - [x] 1.4 Write hooks (test-on-save, knowledge-guard) in `.kiro/hooks/`
+  - [x] 1.5 Write custom agents (crop-doctor, harvest-reviewer) in `.kiro/agents/`
+  - [x] 1.6 Write MCP server + `.kiro/settings/mcp.json`
+- [x] 2. Build knowledge base
+  - [x] 2.1 Write `data/knowledge.json`: 6 crops, 24 conditions, >= 3 symptoms each
+  - [x] 2.2 Write `scripts/validate-knowledge.mjs` and validate the file
+- [x] 3. Build the pure engine (`js/engine.js`)
+  - [x] 3.1 Implement `diagnose()` with scoring, tie-breaks, confidence bands
+  - [x] 3.2 Implement `moonPhase()`, `nextFullMoon()`, `nextNewMoon()`
+  - [x] 3.3 Implement `plantingWindows()` and `sprayVerdict()`
+- [x] 4. Build weather client (`js/weather.js`) with offline fallback
+- [x] 5. Build UI (`index.html`, `css/style.css`, `js/app.js`, `js/strings.js`)
+  - [x] 5.1 Tabs + Weather Oracle panel
+  - [x] 5.2 Moon Almanac panel
+  - [x] 5.3 Crop Doctor panel
+  - [x] 5.4 Pest Bestiary panel with filters
+  - [x] 5.5 Harvest Log panel (localStorage)
+- [x] 6. Tests
+  - [x] 6.1 Unit tests `tests/engine.test.mjs`
+  - [x] 6.2 Property-based tests `tests/pbt.mjs` (seeded, 200 cases/property)
+  - [x] 6.3 Run `npm test` green
+- [ ] 7. Verify + ship
+  - [x] 7.1 Serve locally, smoke-test all five tabs
+  - [x] 7.2 Kiro CLI review pass (needs Yuni's sign-in) + fix findings — DONE 17 Nov 2026: 1 blocker + 6 majors + 13 minors, all fixed, 18 unit tests + PBT green, MCP + smoke re-verified (incl. 360px). Log: ~/workspace/kiroween/kiro-review-2026-11-17.md
+  - [ ] 7.3 Demo video (< 3 min) + Devpost draft — draft FINALIZED (this file); video PLAN written (~/workspace/kiroween/video/VIDEO_PLAN.md); recording pending public repo (needs live URL for end card)

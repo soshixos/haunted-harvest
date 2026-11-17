@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "test-on-save",
+      "description": "Run the unit + property-based test suite whenever a JS or data file is saved.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.(mjs|js|json)$",
+      "action": {
+        "type": "command",
+        "command": "npm test"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "haunted-harvest",
+  "version": "1.0.0",
+  "description": "Haunted Harvest (Panen Hantu) — a free farmer's companion stitching live weather, moon lore, and a crop-disease expert system. Built with Kiro for Kiroween 2026 (Frankenstein).",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/engine.test.mjs && node tests/pbt.mjs",
+    "validate": "node scripts/validate-knowledge.mjs",
+    "serve": "python3 -m http.server 8123"
+  }
+}

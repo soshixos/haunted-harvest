@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haunted Harvest — Panen Hantu | Free farmer's companion</title>
+<meta name="description" content="A haunted farmer's companion: live weather, moon almanac, crop-disease doctor, and pest bestiary — stitched into one free tool. Built with Kiro for Kiroween 2026.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎃</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-moon" aria-hidden="true">🌕</div>
+  <h1>🎃 Haunted Harvest</h1>
+  <p class="subtitle">Panen Hantu — a haunted farmer's companion</p>
+  <p class="tagline">Live weather, moon lore, and a crop-disease expert system — stitched into one free tool for smallholder farmers.</p>
+  <p class="meta">Built with Kiro for Kiroween 2026 · Frankenstein category · Free forever: no accounts, no keys, no backend</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Tools">
+  <button class="tab active" data-tab="weather" role="tab" aria-selected="true" aria-controls="tab-weather">🌦️ Weather Oracle</button>
+  <button class="tab" data-tab="moon" role="tab" aria-selected="false" aria-controls="tab-moon">🌙 Moon Almanac</button>
+  <button class="tab" data-tab="doctor" role="tab" aria-selected="false" aria-controls="tab-doctor">🩺 Crop Doctor</button>
+  <button class="tab" data-tab="bestiary" role="tab" aria-selected="false" aria-controls="tab-bestiary">👻 Pest Bestiary</button>
+  <button class="tab" data-tab="log" role="tab" aria-selected="false" aria-controls="tab-log">🌾 Harvest Log</button>
+</nav>
+
+<main>
+  <section id="tab-weather" class="panel active" role="tabpanel" aria-label="Weather Oracle">
+    <h2>🌦️ Weather Oracle</h2>
+    <p class="hint">Seven-day forecast from Open-Meteo (free, no key) — plus a spray verdict for each day.</p>
+    <form id="place-form" class="row">
+      <label for="place-input">Farm location</label>
+      <input id="place-input" type="text" placeholder="e.g. Purwokerto" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+    <div id="place-results" class="place-results"></div>
+    <p id="weather-location" class="location"></p>
+    <p id="weather-offline" class="notice hidden"></p>
+    <div id="forecast" class="forecast"></div>
+  </section>
+
+  <section id="tab-moon" class="panel" role="tabpanel" aria-label="Moon Almanac">
+    <h2>🌙 Moon Almanac</h2>
+    <p class="hint">The moon, computed from astronomy — paired with traditional planting lore (labelled as tradition, not science).</p>
+    <div id="moon-now" class="moon-now"></div>
+    <div class="row">
+      <label for="moon-crop">Planting windows for</label>
+      <select id="moon-crop"></select>
+    </div>
+    <div id="moon-windows" class="windows"></div>
+    <p id="moon-guidance" class="guidance"></p>
+  </section>
+
+  <section id="tab-doctor" class="panel" role="tabpanel" aria-label="Crop Doctor">
+    <h2>🩺 Crop Doctor</h2>
+    <p class="hint">Tick every symptom you see on your crop. The Doctor ranks the likely culprits and tells you how to fight them.</p>
+    <div class="row">
+      <label for="doctor-crop">Crop</label>
+      <select id="doctor-crop"></select>
+    </div>
+    <div id="symptom-list" class="symptoms"></div>
+    <button id="diagnose-btn" class="primary">🔮 Diagnose</button>
+    <p id="doctor-empty" class="notice hidden">Tick at least one symptom first — the Doctor needs clues.</p>
+    <div id="diagnosis" class="diagnosis"></div>
+    <p class="disclaimer" id="doctor-disclaimer"></p>
+  </section>
+
+  <section id="tab-bestiary" class="panel" role="tabpanel" aria-label="Pest Bestiary">
+    <h2>👻 Pest Bestiary</h2>
+    <p class="hint">Every disease and pest as a monster — know its weakness before it haunts your field.</p>
+    <div class="row">
+      <label for="bestiary-crop">Crop</label>
+      <select id="bestiary-crop"></select>
+      <label for="bestiary-type">Type</label>
+      <select id="bestiary-type">
+        <option value="">All types</option>
+        <option value="fungus">Fungus</option>
+        <option value="bacteria">Bacteria</option>
+        <option value="pest">Pest</option>
+      </select>
+    </div>
+    <div id="bestiary-grid" class="grid"></div>
+  </section>
+
+  <section id="tab-log" class="panel" role="tabpanel" aria-label="Harvest Log">
+    <h2>🌾 Harvest Log</h2>
+    <p class="hint">Your seasons, kept on your own device — nothing leaves your phone.</p>
+    <form id="log-form" class="row wrap">
+      <label for="log-crop">Crop</label>
+      <select id="log-crop"></select>
+      <label for="log-action">Action</label>
+      <select id="log-action">
+        <option value="Sowed">Sowed</option>
+        <option value="Transplanted">Transplanted</option>
+        <option value="Sprayed">Sprayed</option>
+        <option value="Harvested">Harvested</option>
+        <option value="Note">Note</option>
+      </select>
+      <label for="log-date">Date</label>
+      <input id="log-date" type="date" required>
+      <label for="log-note">Note</label>
+      <input id="log-note" type="text" placeholder="e.g. 2 beds, rain yesterday" maxlength="120">
+      <button type="submit" class="primary">Add entry</button>
+    </form>
+    <p id="log-stats" class="stats"></p>
+    <ul id="log-list" class="log-list"></ul>
+  </section>
+</main>
+
+<footer>
+  <p id="footer-text">Built with Kiro (CLI) for Kiroween 2026 — Frankenstein category. Free forever: no accounts, no keys, no backend. Data: Open-Meteo (free, no key).</p>
+  <p>Knowledge: curated from public agricultural extension guidance. Weather: Open-Meteo. Moon math: synodic month 29.530588853 days.</p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
